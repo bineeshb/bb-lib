@@ -9,6 +9,11 @@
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "ngx-bb-ui": [
+        "./dist/ngx-bb-ui"
+      ]
+    },
     "skipLibCheck": true,
     "isolatedModules": true,
     "esModuleInterop": true,
