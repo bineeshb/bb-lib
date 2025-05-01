@@ -11,6 +11,16 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "DEFAULT",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ngx-bb-ui/src/lib/components/toast/toast.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {\r\n    message: 'Test Success Message',\r\n    type: 'success',\r\n    life: 5000,\r\n    closed: () => console.log('Toast Closed !!!'),\r\n  }\r\n}"
+            },
+            {
                 "name": "ErrorToast",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -18,7 +28,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    message: 'Test Error Message',\r\n    type: 'error',\r\n  },\r\n}"
+                "defaultValue": "{\r\n  args: {\r\n    ...DEFAULT.args,\r\n    message: 'Test Error Message',\r\n    type: 'error',\r\n  },\r\n}"
             },
             {
                 "name": "meta",
@@ -28,7 +38,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ToastComponent>",
-                "defaultValue": "{\r\n  title: 'Example/Toast',\r\n  component: ToastComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    message: {\r\n      control: 'text',\r\n    },\r\n    type: {\r\n      control: 'radio',\r\n      options: ['success', 'error'],\r\n    },\r\n    life: {\r\n      control: 'number',\r\n    },\r\n  },\r\n  args: { closed: fn() },\r\n}"
+                "defaultValue": "{\r\n  title: 'Example/Toast',\r\n  component: ToastComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    message: {\r\n      control: 'text',\r\n    },\r\n    type: {\r\n      control: 'radio',\r\n      options: ['success', 'error'],\r\n    },\r\n    life: {\r\n      control: 'number',\r\n    },\r\n    closed: {\r\n      type: 'function',\r\n      control: false\r\n    },\r\n  },\r\n}"
             },
             {
                 "name": "preview",
@@ -48,7 +58,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    message: 'Test Success Message',\r\n    type: 'success',\r\n    life: 10000,\r\n  },\r\n}"
+                "defaultValue": "{\r\n  args: {\r\n    ...DEFAULT.args,\r\n  },\r\n}"
             }
         ],
         "functions": [],
@@ -69,6 +79,16 @@
         "groupedVariables": {
             "projects/ngx-bb-ui/src/lib/components/toast/toast.stories.ts": [
                 {
+                    "name": "DEFAULT",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ngx-bb-ui/src/lib/components/toast/toast.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {\r\n    message: 'Test Success Message',\r\n    type: 'success',\r\n    life: 5000,\r\n    closed: () => console.log('Toast Closed !!!'),\r\n  }\r\n}"
+                },
+                {
                     "name": "ErrorToast",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
@@ -76,7 +96,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n  args: {\r\n    message: 'Test Error Message',\r\n    type: 'error',\r\n  },\r\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    ...DEFAULT.args,\r\n    message: 'Test Error Message',\r\n    type: 'error',\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -86,7 +106,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ToastComponent>",
-                    "defaultValue": "{\r\n  title: 'Example/Toast',\r\n  component: ToastComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    message: {\r\n      control: 'text',\r\n    },\r\n    type: {\r\n      control: 'radio',\r\n      options: ['success', 'error'],\r\n    },\r\n    life: {\r\n      control: 'number',\r\n    },\r\n  },\r\n  args: { closed: fn() },\r\n}"
+                    "defaultValue": "{\r\n  title: 'Example/Toast',\r\n  component: ToastComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    message: {\r\n      control: 'text',\r\n    },\r\n    type: {\r\n      control: 'radio',\r\n      options: ['success', 'error'],\r\n    },\r\n    life: {\r\n      control: 'number',\r\n    },\r\n    closed: {\r\n      type: 'function',\r\n      control: false\r\n    },\r\n  },\r\n}"
                 },
                 {
                     "name": "SuccessToast",
@@ -96,7 +116,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n  args: {\r\n    message: 'Test Success Message',\r\n    type: 'success',\r\n    life: 10000,\r\n  },\r\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    ...DEFAULT.args,\r\n  },\r\n}"
                 }
             ],
             "projects/ngx-bb-ui/.storybook/preview.ts": [
@@ -141,6 +161,16 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "preview",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ngx-bb-ui/src/lib/components/toast/toast.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DEFAULT",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

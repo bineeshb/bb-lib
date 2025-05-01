@@ -18,23 +18,34 @@ const meta: Meta<ToastComponent> = {
     life: {
       control: 'number',
     },
+    closed: {
+      type: 'function',
+      control: false
+    },
   },
-  args: { closed: fn() },
 };
 
 export default meta;
 type Story = StoryObj<ToastComponent>;
 
-export const SuccessToast: Story = {
+const DEFAULT: Story = {
   args: {
     message: 'Test Success Message',
     type: 'success',
-    life: 10000,
+    life: 5000,
+    closed: () => console.log('Toast Closed !!!'),
+  }
+};
+
+export const SuccessToast: Story = {
+  args: {
+    ...DEFAULT.args,
   },
 };
 
 export const ErrorToast: Story = {
   args: {
+    ...DEFAULT.args,
     message: 'Test Error Message',
     type: 'error',
   },

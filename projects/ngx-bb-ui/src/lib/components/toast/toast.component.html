@@ -1,4 +1,4 @@
-@if (message) {
+@if (message()) {
   <div class="wrapper" [class.error]="isError()">
     <span class="icon">
       @if (isError()) {
@@ -7,7 +7,7 @@
         &check;
       }
     </span>&nbsp;
-    {{ message }}
+    {{ message() }}
     <button type="button" class="btn-close" (click)="close()">&times;</button>
   </div>
 }
