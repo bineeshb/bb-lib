@@ -14,11 +14,21 @@
                 "name": "DEFAULT",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "projects/ngx-bb-ui/src/lib/components/dropdown-input-group/dropdown-input-group.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {\r\n    options: [\r\n      { label: 'Option 1', value: 'option1' },\r\n      { label: 'Option 2', value: 'option2' },\r\n      { label: 'Option 3', value: 'option3' },\r\n    ],\r\n    id: 'sb',\r\n    name: 'sb',\r\n    disabled: false,\r\n  },\r\n}"
+            },
+            {
+                "name": "DEFAULT",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "projects/ngx-bb-ui/src/lib/components/toast/toast.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    message: 'Test Success Message',\r\n    type: 'success',\r\n    life: 5000,\r\n    closed: () => console.log('Toast Closed !!!'),\r\n  }\r\n}"
+                "defaultValue": "{\r\n  args: {\r\n    message: 'Test Success Message',\r\n    type: 'success',\r\n    life: 5000,\r\n    closed: () => console.log('Toast Closed !!!'),\r\n  },\r\n}"
             },
             {
                 "name": "ErrorToast",
@@ -29,6 +39,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: {\r\n    ...DEFAULT.args,\r\n    message: 'Test Error Message',\r\n    type: 'error',\r\n  },\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ngx-bb-ui/src/lib/components/dropdown-input-group/dropdown-input-group.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<DropdownInputGroupComponent>",
+                "defaultValue": "{\r\n  title: 'Example/Dropdown Input Group',\r\n  component: DropdownInputGroupComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    id: {\r\n      control: 'text'\r\n    },\r\n    name: {\r\n      control: 'text'\r\n    },\r\n    disabled: {\r\n      control: 'boolean'\r\n    },\r\n  },\r\n}"
             },
             {
                 "name": "meta",
@@ -51,6 +71,16 @@
                 "defaultValue": "{\r\n  parameters: {\r\n    controls: {\r\n      matchers: {\r\n       color: /(background|color)$/i,\r\n       date: /Date$/i,\r\n      },\r\n    },\r\n  },\r\n}"
             },
             {
+                "name": "ReactiveForm",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ngx-bb-ui/src/lib/components/dropdown-input-group/dropdown-input-group.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {\r\n    ...DEFAULT.args,\r\n  },\r\n  render: args => ({\r\n    props: {\r\n      ...args,\r\n      storyForm: new FormGroup({\r\n        digControl: new FormControl({ selectedOption: 'option1', input: 'Option1' }),\r\n      }),\r\n    },\r\n    template: `\r\n      <form [formGroup]=\"storyForm\">\r\n        <bb-dropdown-input-group ${argsToTemplate(args)} formControlName=\"digControl\" />\r\n      </form>\r\n      <br />\r\n      @if(storyForm.get('digControl').value) {\r\n        <div>{{ storyForm.get('digControl').value | json }}</div>\r\n      }\r\n    `,\r\n  }),\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [ReactiveFormsModule]\r\n    }),\r\n  ],\r\n}"
+            },
+            {
                 "name": "SuccessToast",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -59,10 +89,31 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: {\r\n    ...DEFAULT.args,\r\n  },\r\n}"
+            },
+            {
+                "name": "TemplateDrivenForm",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ngx-bb-ui/src/lib/components/dropdown-input-group/dropdown-input-group.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {\r\n    ...DEFAULT.args,\r\n  },\r\n  render: args => ({\r\n    props: {\r\n      ...args,\r\n      digValue: { selectedOption: 'option1', input: 'Option1' },\r\n    },\r\n    template: `\r\n      <bb-dropdown-input-group ${argsToTemplate(args)} [(ngModel)]=\"digValue\" />\r\n      <br />\r\n      @if(digValue) {\r\n        <div>{{ digValue | json }}</div>\r\n      }\r\n    `,\r\n  }),\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [FormsModule]\r\n    }),\r\n  ],\r\n}"
             }
         ],
         "functions": [],
         "typealiases": [
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<DropdownInputGroupComponent>",
+                "file": "projects/ngx-bb-ui/src/lib/components/dropdown-input-group/dropdown-input-group.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
             {
                 "name": "Story",
                 "ctype": "miscellaneous",
@@ -77,6 +128,48 @@
         ],
         "enumerations": [],
         "groupedVariables": {
+            "projects/ngx-bb-ui/src/lib/components/dropdown-input-group/dropdown-input-group.stories.ts": [
+                {
+                    "name": "DEFAULT",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ngx-bb-ui/src/lib/components/dropdown-input-group/dropdown-input-group.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {\r\n    options: [\r\n      { label: 'Option 1', value: 'option1' },\r\n      { label: 'Option 2', value: 'option2' },\r\n      { label: 'Option 3', value: 'option3' },\r\n    ],\r\n    id: 'sb',\r\n    name: 'sb',\r\n    disabled: false,\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ngx-bb-ui/src/lib/components/dropdown-input-group/dropdown-input-group.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<DropdownInputGroupComponent>",
+                    "defaultValue": "{\r\n  title: 'Example/Dropdown Input Group',\r\n  component: DropdownInputGroupComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    id: {\r\n      control: 'text'\r\n    },\r\n    name: {\r\n      control: 'text'\r\n    },\r\n    disabled: {\r\n      control: 'boolean'\r\n    },\r\n  },\r\n}"
+                },
+                {
+                    "name": "ReactiveForm",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ngx-bb-ui/src/lib/components/dropdown-input-group/dropdown-input-group.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {\r\n    ...DEFAULT.args,\r\n  },\r\n  render: args => ({\r\n    props: {\r\n      ...args,\r\n      storyForm: new FormGroup({\r\n        digControl: new FormControl({ selectedOption: 'option1', input: 'Option1' }),\r\n      }),\r\n    },\r\n    template: `\r\n      <form [formGroup]=\"storyForm\">\r\n        <bb-dropdown-input-group ${argsToTemplate(args)} formControlName=\"digControl\" />\r\n      </form>\r\n      <br />\r\n      @if(storyForm.get('digControl').value) {\r\n        <div>{{ storyForm.get('digControl').value | json }}</div>\r\n      }\r\n    `,\r\n  }),\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [ReactiveFormsModule]\r\n    }),\r\n  ],\r\n}"
+                },
+                {
+                    "name": "TemplateDrivenForm",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ngx-bb-ui/src/lib/components/dropdown-input-group/dropdown-input-group.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {\r\n    ...DEFAULT.args,\r\n  },\r\n  render: args => ({\r\n    props: {\r\n      ...args,\r\n      digValue: { selectedOption: 'option1', input: 'Option1' },\r\n    },\r\n    template: `\r\n      <bb-dropdown-input-group ${argsToTemplate(args)} [(ngModel)]=\"digValue\" />\r\n      <br />\r\n      @if(digValue) {\r\n        <div>{{ digValue | json }}</div>\r\n      }\r\n    `,\r\n  }),\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [FormsModule]\r\n    }),\r\n  ],\r\n}"
+                }
+            ],
             "projects/ngx-bb-ui/src/lib/components/toast/toast.stories.ts": [
                 {
                     "name": "DEFAULT",
@@ -86,7 +179,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n  args: {\r\n    message: 'Test Success Message',\r\n    type: 'success',\r\n    life: 5000,\r\n    closed: () => console.log('Toast Closed !!!'),\r\n  }\r\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    message: 'Test Success Message',\r\n    type: 'success',\r\n    life: 5000,\r\n    closed: () => console.log('Toast Closed !!!'),\r\n  },\r\n}"
                 },
                 {
                     "name": "ErrorToast",
@@ -135,6 +228,19 @@
         "groupedFunctions": {},
         "groupedEnumerations": {},
         "groupedTypeAliases": {
+            "projects/ngx-bb-ui/src/lib/components/dropdown-input-group/dropdown-input-group.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<DropdownInputGroupComponent>",
+                    "file": "projects/ngx-bb-ui/src/lib/components/dropdown-input-group/dropdown-input-group.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
             "projects/ngx-bb-ui/src/lib/components/toast/toast.stories.ts": [
                 {
                     "name": "Story",
@@ -161,6 +267,56 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "preview",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ngx-bb-ui/src/lib/components/dropdown-input-group/dropdown-input-group.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DEFAULT",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ngx-bb-ui/src/lib/components/dropdown-input-group/dropdown-input-group.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ngx-bb-ui/src/lib/components/dropdown-input-group/dropdown-input-group.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ReactiveForm",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ngx-bb-ui/src/lib/components/dropdown-input-group/dropdown-input-group.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "TemplateDrivenForm",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ngx-bb-ui/src/lib/components/dropdown-input-group/dropdown-input-group.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

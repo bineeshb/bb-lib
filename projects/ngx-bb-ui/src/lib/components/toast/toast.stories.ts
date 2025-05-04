@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { fn } from '@storybook/test';
 
 import { ToastComponent } from './toast.component';
 
@@ -34,7 +33,7 @@ const DEFAULT: Story = {
     type: 'success',
     life: 5000,
     closed: () => console.log('Toast Closed !!!'),
-  }
+  },
 };
 
 export const SuccessToast: Story = {

@@ -1,0 +1,10 @@
+<div>
+  <select [name]="name()" [id]="idDropdown()" [formControl]="optionsControl"
+    (change)="updateValue()">
+    @for (ddOption of options(); track $index) {
+      <option [value]="ddOption.value">{{ ddOption.label }}</option>
+    }
+  </select>
+  <input type="text" [id]="idInput()" [placeholder]="placeholder()" [formControl]="inputControl"
+    (input)="updateValue()" />
+</div>
