@@ -18,7 +18,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    options: [\r\n      { label: 'Option 1', value: 'option1' },\r\n      { label: 'Option 2', value: 'option2' },\r\n      { label: 'Option 3', value: 'option3' },\r\n    ],\r\n    id: 'sb',\r\n    name: 'sb',\r\n    disabled: false,\r\n  },\r\n}"
+                "defaultValue": "{\r\n  args: {\r\n    options: [\r\n      { label: 'Option 1', value: 'option1' },\r\n      { label: 'Option 2', value: 'option2' },\r\n      { label: 'Option 3', value: 'option3' },\r\n    ],\r\n    id: 'sb',\r\n    name: 'sb',\r\n  },\r\n}"
             },
             {
                 "name": "DEFAULT",
@@ -78,7 +78,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    ...DEFAULT.args,\r\n  },\r\n  render: args => ({\r\n    props: {\r\n      ...args,\r\n      storyForm: new FormGroup({\r\n        digControl: new FormControl({ selectedOption: 'option1', input: 'Option1' }),\r\n      }),\r\n    },\r\n    template: `\r\n      <form [formGroup]=\"storyForm\">\r\n        <bb-dropdown-input-group ${argsToTemplate(args)} formControlName=\"digControl\" />\r\n      </form>\r\n      <br />\r\n      @if(storyForm.get('digControl').value) {\r\n        <div>{{ storyForm.get('digControl').value | json }}</div>\r\n      }\r\n    `,\r\n  }),\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [ReactiveFormsModule]\r\n    }),\r\n  ],\r\n}"
+                "defaultValue": "{\r\n  args: {\r\n    ...DEFAULT.args,\r\n  },\r\n  render: args => ({\r\n    props: {\r\n      ...args,\r\n      storyForm: new FormGroup({\r\n        digControl1: new FormControl({ selectedOption: 'option1', input: 'Option1' }),\r\n        digControl2: new FormControl({ value: { selectedOption: 'option1', input: 'Option1' }, disabled: true }),\r\n        digControl3: new FormControl(null, Validators.required),\r\n      }),\r\n    },\r\n    template: `\r\n      <form [formGroup]=\"storyForm\">\r\n        <bb-dropdown-input-group ${argsToTemplate(args)} formControlName=\"digControl1\" />\r\n        @if(storyForm.get('digControl1').value) {\r\n          <br />\r\n          <div>Value: {{ storyForm.get('digControl1').value | json }}</div>\r\n        }\r\n        <br />\r\n        <h3>Disabled</h3>\r\n        <bb-dropdown-input-group ${argsToTemplate(args)} formControlName=\"digControl2\" />\r\n        <br />\r\n        <h3>Validation - Required</h3>\r\n        <bb-dropdown-input-group ${argsToTemplate(args)} formControlName=\"digControl3\" />\r\n        @if (storyForm.get('digControl3')?.errors?.required) {\r\n          <div>This field is required</div>\r\n        }\r\n      </form>\r\n    `,\r\n  }),\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [ReactiveFormsModule]\r\n    }),\r\n  ],\r\n}"
             },
             {
                 "name": "SuccessToast",
@@ -98,7 +98,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    ...DEFAULT.args,\r\n  },\r\n  render: args => ({\r\n    props: {\r\n      ...args,\r\n      digValue: { selectedOption: 'option1', input: 'Option1' },\r\n    },\r\n    template: `\r\n      <bb-dropdown-input-group ${argsToTemplate(args)} [(ngModel)]=\"digValue\" />\r\n      <br />\r\n      @if(digValue) {\r\n        <div>{{ digValue | json }}</div>\r\n      }\r\n    `,\r\n  }),\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [FormsModule]\r\n    }),\r\n  ],\r\n}"
+                "defaultValue": "{\r\n  args: {\r\n    ...DEFAULT.args,\r\n    disabled: false,\r\n  },\r\n  render: args => ({\r\n    props: {\r\n      ...args,\r\n      digValue1: { selectedOption: 'option1', input: 'Option1' },\r\n      digValue2: { selectedOption: 'option1', input: 'Option1' },\r\n      digValue3: null,\r\n    },\r\n    template: `\r\n      <bb-dropdown-input-group ${argsToTemplate(args)} [(ngModel)]=\"digValue1\" />\r\n      @if(digValue1) {\r\n        <br />\r\n        <div>Value: {{ digValue1 | json }}</div>\r\n      }\r\n      <br />\r\n      <h3>Disabled</h3>\r\n      <bb-dropdown-input-group ${argsToTemplate(args)} [(ngModel)]=\"digValue2\" [disabled]=\"true\" />\r\n      <br />\r\n      <h3>Validation - Required</h3>\r\n      <bb-dropdown-input-group ${argsToTemplate(args)} [(ngModel)]=\"digValue3\" [required]=\"true\" #dig3=\"ngModel\" name=\"dig3\" />\r\n      @if (dig3.errors?.required) {\r\n        <div>This field is required</div>\r\n      }\r\n    `,\r\n  }),\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [FormsModule]\r\n    }),\r\n  ],\r\n}"
             }
         ],
         "functions": [],
@@ -137,7 +137,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n  args: {\r\n    options: [\r\n      { label: 'Option 1', value: 'option1' },\r\n      { label: 'Option 2', value: 'option2' },\r\n      { label: 'Option 3', value: 'option3' },\r\n    ],\r\n    id: 'sb',\r\n    name: 'sb',\r\n    disabled: false,\r\n  },\r\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    options: [\r\n      { label: 'Option 1', value: 'option1' },\r\n      { label: 'Option 2', value: 'option2' },\r\n      { label: 'Option 3', value: 'option3' },\r\n    ],\r\n    id: 'sb',\r\n    name: 'sb',\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -157,7 +157,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n  args: {\r\n    ...DEFAULT.args,\r\n  },\r\n  render: args => ({\r\n    props: {\r\n      ...args,\r\n      storyForm: new FormGroup({\r\n        digControl: new FormControl({ selectedOption: 'option1', input: 'Option1' }),\r\n      }),\r\n    },\r\n    template: `\r\n      <form [formGroup]=\"storyForm\">\r\n        <bb-dropdown-input-group ${argsToTemplate(args)} formControlName=\"digControl\" />\r\n      </form>\r\n      <br />\r\n      @if(storyForm.get('digControl').value) {\r\n        <div>{{ storyForm.get('digControl').value | json }}</div>\r\n      }\r\n    `,\r\n  }),\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [ReactiveFormsModule]\r\n    }),\r\n  ],\r\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    ...DEFAULT.args,\r\n  },\r\n  render: args => ({\r\n    props: {\r\n      ...args,\r\n      storyForm: new FormGroup({\r\n        digControl1: new FormControl({ selectedOption: 'option1', input: 'Option1' }),\r\n        digControl2: new FormControl({ value: { selectedOption: 'option1', input: 'Option1' }, disabled: true }),\r\n        digControl3: new FormControl(null, Validators.required),\r\n      }),\r\n    },\r\n    template: `\r\n      <form [formGroup]=\"storyForm\">\r\n        <bb-dropdown-input-group ${argsToTemplate(args)} formControlName=\"digControl1\" />\r\n        @if(storyForm.get('digControl1').value) {\r\n          <br />\r\n          <div>Value: {{ storyForm.get('digControl1').value | json }}</div>\r\n        }\r\n        <br />\r\n        <h3>Disabled</h3>\r\n        <bb-dropdown-input-group ${argsToTemplate(args)} formControlName=\"digControl2\" />\r\n        <br />\r\n        <h3>Validation - Required</h3>\r\n        <bb-dropdown-input-group ${argsToTemplate(args)} formControlName=\"digControl3\" />\r\n        @if (storyForm.get('digControl3')?.errors?.required) {\r\n          <div>This field is required</div>\r\n        }\r\n      </form>\r\n    `,\r\n  }),\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [ReactiveFormsModule]\r\n    }),\r\n  ],\r\n}"
                 },
                 {
                     "name": "TemplateDrivenForm",
@@ -167,7 +167,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n  args: {\r\n    ...DEFAULT.args,\r\n  },\r\n  render: args => ({\r\n    props: {\r\n      ...args,\r\n      digValue: { selectedOption: 'option1', input: 'Option1' },\r\n    },\r\n    template: `\r\n      <bb-dropdown-input-group ${argsToTemplate(args)} [(ngModel)]=\"digValue\" />\r\n      <br />\r\n      @if(digValue) {\r\n        <div>{{ digValue | json }}</div>\r\n      }\r\n    `,\r\n  }),\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [FormsModule]\r\n    }),\r\n  ],\r\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    ...DEFAULT.args,\r\n    disabled: false,\r\n  },\r\n  render: args => ({\r\n    props: {\r\n      ...args,\r\n      digValue1: { selectedOption: 'option1', input: 'Option1' },\r\n      digValue2: { selectedOption: 'option1', input: 'Option1' },\r\n      digValue3: null,\r\n    },\r\n    template: `\r\n      <bb-dropdown-input-group ${argsToTemplate(args)} [(ngModel)]=\"digValue1\" />\r\n      @if(digValue1) {\r\n        <br />\r\n        <div>Value: {{ digValue1 | json }}</div>\r\n      }\r\n      <br />\r\n      <h3>Disabled</h3>\r\n      <bb-dropdown-input-group ${argsToTemplate(args)} [(ngModel)]=\"digValue2\" [disabled]=\"true\" />\r\n      <br />\r\n      <h3>Validation - Required</h3>\r\n      <bb-dropdown-input-group ${argsToTemplate(args)} [(ngModel)]=\"digValue3\" [required]=\"true\" #dig3=\"ngModel\" name=\"dig3\" />\r\n      @if (dig3.errors?.required) {\r\n        <div>This field is required</div>\r\n      }\r\n    `,\r\n  }),\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [FormsModule]\r\n    }),\r\n  ],\r\n}"
                 }
             ],
             "projects/ngx-bb-ui/src/lib/components/toast/toast.stories.ts": [

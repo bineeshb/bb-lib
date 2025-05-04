@@ -43,10 +43,12 @@ export class DropdownInputGroupComponent implements ControlValueAccessor {
   }
 
   updateValue(): void {
-    const value = {
-      selectedOption: this.optionsControl.value,
-      input: this.inputControl.value
-    };
+    const value = this.optionsControl.value && this.inputControl.value
+      ? {
+          selectedOption: this.optionsControl.value,
+          input: this.inputControl.value
+        }
+      : null;
     this.onChange(value);
     this.onTouched();
   }

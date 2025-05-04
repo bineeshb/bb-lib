@@ -1,10 +1,10 @@
-<div>
-  <select [name]="name()" [id]="idDropdown()" [formControl]="optionsControl"
-    (change)="updateValue()">
+<div class="bb-group">
+  <select class="bb-dropdown" [name]="name()" [id]="idDropdown()" [formControl]="optionsControl"
+    (change)="updateValue()" (focus)="onTouched()">
     @for (ddOption of options(); track $index) {
       <option [value]="ddOption.value">{{ ddOption.label }}</option>
     }
   </select>
-  <input type="text" [id]="idInput()" [placeholder]="placeholder()" [formControl]="inputControl"
-    (input)="updateValue()" />
+  <input type="text" class="bb-input" [id]="idInput()" [placeholder]="placeholder()" [formControl]="inputControl"
+    (input)="updateValue()" (focus)="onTouched()" />
 </div>

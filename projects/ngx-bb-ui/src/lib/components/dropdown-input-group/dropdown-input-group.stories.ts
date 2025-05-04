@@ -1,5 +1,5 @@
 import { argsToTemplate, Meta, moduleMetadata, StoryObj } from '@storybook/angular';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { DropdownInputGroupComponent } from './dropdown-input-group.component';
 
@@ -32,7 +32,6 @@ const DEFAULT: Story = {
     ],
     id: 'sb',
     name: 'sb',
-    disabled: false,
   },
 };
 
@@ -44,17 +43,28 @@ export const ReactiveForm: Story = {
     props: {
       ...args,
       storyForm: new FormGroup({
-        digControl: new FormControl({ selectedOption: 'option1', input: 'Option1' }),
+        digControl1: new FormControl({ selectedOption: 'option1', input: 'Option1' }),
+        digControl2: new FormControl({ value: { selectedOption: 'option1', input: 'Option1' }, disabled: true }),
+        digControl3: new FormControl(null, Validators.required),
       }),
     },
     template: `
       <form [formGroup]="storyForm">
-        <bb-dropdown-input-group ${argsToTemplate(args)} formControlName="digControl" />
+        <bb-dropdown-input-group ${argsToTemplate(args)} formControlName="digControl1" />
+        @if(storyForm.get('digControl1').value) {
+          <br />
+          <div>Value: {{ storyForm.get('digControl1').value | json }}</div>
+        }
+        <br />
+        <h3>Disabled</h3>
+        <bb-dropdown-input-group ${argsToTemplate(args)} formControlName="digControl2" />
+        <br />
+        <h3>Validation - Required</h3>
+        <bb-dropdown-input-group ${argsToTemplate(args)} formControlName="digControl3" />
+        @if (storyForm.get('digControl3')?.errors?.required) {
+          <div>This field is required</div>
+        }
       </form>
-      <br />
-      @if(storyForm.get('digControl').value) {
-        <div>{{ storyForm.get('digControl').value | json }}</div>
-      }
     `,
   }),
   decorators: [
@@ -67,17 +77,29 @@ export const ReactiveForm: Story = {
 export const TemplateDrivenForm: Story = {
   args: {
     ...DEFAULT.args,
+    disabled: false,
   },
   render: args => ({
     props: {
       ...args,
-      digValue: { selectedOption: 'option1', input: 'Option1' },
+      digValue1: { selectedOption: 'option1', input: 'Option1' },
+      digValue2: { selectedOption: 'option1', input: 'Option1' },
+      digValue3: null,
     },
     template: `
-      <bb-dropdown-input-group ${argsToTemplate(args)} [(ngModel)]="digValue" />
+      <bb-dropdown-input-group ${argsToTemplate(args)} [(ngModel)]="digValue1" />
+      @if(digValue1) {
+        <br />
+        <div>Value: {{ digValue1 | json }}</div>
+      }
       <br />
-      @if(digValue) {
-        <div>{{ digValue | json }}</div>
+      <h3>Disabled</h3>
+      <bb-dropdown-input-group ${argsToTemplate(args)} [(ngModel)]="digValue2" [disabled]="true" />
+      <br />
+      <h3>Validation - Required</h3>
+      <bb-dropdown-input-group ${argsToTemplate(args)} [(ngModel)]="digValue3" [required]="true" #dig3="ngModel" name="dig3" />
+      @if (dig3.errors?.required) {
+        <div>This field is required</div>
       }
     `,
   }),

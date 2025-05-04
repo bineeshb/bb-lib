@@ -1,0 +1,24 @@
+.bb-group {
+  display: flex;
+
+  .bb-dropdown, .bb-input {
+    border: 1px solid black;
+    padding: 5px;
+
+    &[disabled] {
+      border-color: gray;
+      color: gray;
+      opacity: 0.6;
+    }
+  }
+
+  .bb-dropdown {
+    border-right: 0 none;
+  }
+}
+
+:host.ng-invalid.ng-touched {
+  .bb-dropdown, .bb-input {
+    border-color: red;
+  }
+}
