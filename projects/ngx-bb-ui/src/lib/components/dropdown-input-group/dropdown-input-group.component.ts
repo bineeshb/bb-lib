@@ -24,10 +24,15 @@ interface DropdownInputGroupValue<TOptionValue = string> {
 })
 export class DropdownInputGroupComponent implements ControlValueAccessor {
   options = input<DropdownInputGroupOption[]>([]);
-  id = input<string>('dig');
-  name = input<string>('dig');
-  disabled = model<boolean>(false);
-  placeholder = input<string>('Enter text');
+  id = input('dig');
+  name = input('dig');
+  disabled = model(false);
+  dropdownPlaceholder = input<string | null>('Select');
+  inputPlaceholder = input<string | null>('Enter text');
+  wrapperClass = input<string | null>(null);
+  dropdownClass = input<string | null>(null);
+  inputClass = input<string | null>(null);
+  emptyMessage = input('No options');
 
   idDropdown = computed(() => `${this.id()}-dd`);
   idInput = computed(() => `${this.id()}-input`);
@@ -38,7 +43,7 @@ export class DropdownInputGroupComponent implements ControlValueAccessor {
   onTouched = () => {};
 
   writeValue(newValue: DropdownInputGroupValue): void {
-    this.optionsControl.setValue(newValue?.selectedOption);
+    this.optionsControl.setValue(newValue?.selectedOption ?? '');
     this.inputControl.setValue(newValue?.input);
   }
 

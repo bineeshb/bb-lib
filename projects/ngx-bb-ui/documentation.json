@@ -18,7 +18,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    options: [\r\n      { label: 'Option 1', value: 'option1' },\r\n      { label: 'Option 2', value: 'option2' },\r\n      { label: 'Option 3', value: 'option3' },\r\n    ],\r\n    id: 'sb',\r\n    name: 'sb',\r\n  },\r\n}"
+                "defaultValue": "{\r\n  args: {\r\n    options: [],\r\n    id: 'sb',\r\n    name: 'sb',\r\n  },\r\n}"
             },
             {
                 "name": "DEFAULT",
@@ -137,7 +137,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n  args: {\r\n    options: [\r\n      { label: 'Option 1', value: 'option1' },\r\n      { label: 'Option 2', value: 'option2' },\r\n      { label: 'Option 3', value: 'option3' },\r\n    ],\r\n    id: 'sb',\r\n    name: 'sb',\r\n  },\r\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    options: [],\r\n    id: 'sb',\r\n    name: 'sb',\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",

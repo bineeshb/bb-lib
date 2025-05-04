@@ -1,10 +1,15 @@
-<div class="bb-group">
-  <select class="bb-dropdown" [name]="name()" [id]="idDropdown()" [formControl]="optionsControl"
-    (change)="updateValue()" (focus)="onTouched()">
+<div class="bb-group {{ wrapperClass() }}">
+  <select class="bb-dropdown {{ dropdownClass() }}" [name]="name()" [id]="idDropdown()" [formControl]="optionsControl"
+    (change)="updateValue()" (focus)="onTouched()" [attr.required]="!!dropdownPlaceholder()">
+    @if (dropdownPlaceholder()) {
+      <option value="" disabled selected hidden>{{ dropdownPlaceholder() }}</option>
+    }
     @for (ddOption of options(); track $index) {
-      <option [value]="ddOption.value">{{ ddOption.label }}</option>
+      <option class="bb-option" [value]="ddOption.value">{{ ddOption.label }}</option>
+    } @empty {
+      <option value="EMPTY" disabled>{{ emptyMessage() }}</option>
     }
   </select>
-  <input type="text" class="bb-input" [id]="idInput()" [placeholder]="placeholder()" [formControl]="inputControl"
+  <input type="text" class="bb-input {{ inputClass() }}" [id]="idInput()" [placeholder]="inputPlaceholder()" [formControl]="inputControl"
     (input)="updateValue()" (focus)="onTouched()" />
 </div>
